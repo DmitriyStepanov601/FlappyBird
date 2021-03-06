@@ -1,3 +1,5 @@
+package logic;
+import graphics.Screen;
 import java.util.Set;
 
 /**
