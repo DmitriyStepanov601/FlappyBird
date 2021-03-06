@@ -1,3 +1,5 @@
+package logic;
+import graphics.Screen;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 import javax.swing.*;
@@ -12,9 +14,9 @@ import java.util.TreeSet;
  * @author Dmitriy Stepanov
  */
 public class Engine {
-    public Game game;
-    public BufferStrategy strategy;
-    public TreeSet<String> keySet = new TreeSet<>();
+    private final Game game;
+    private final BufferStrategy strategy;
+    private final TreeSet<String> keySet = new TreeSet<>();
 
     /**
      * Constructor - creating new game mechanics
@@ -42,8 +44,9 @@ public class Engine {
         }
 
         container.setIconImage(windowIcon);
-        container.setBounds(bounds.x + (bounds.width - this.game.getWidth()) / 2, bounds.y + (bounds.height -
-                        this.game.getHeight()) / 2, this.game.getWidth(), this.game.getHeight());
+        container.setBounds(bounds.x + (bounds.width - this.game.getWidth()) / 2,
+                bounds.y + (bounds.height - this.game.getHeight()) / 2, this.game.getWidth(),
+                this.game.getHeight());
         canvas.setBounds(0,0, this.game.getWidth(), this.game.getHeight());
         panel.add(canvas);        
         canvas.setIgnoreRepaint(true);
@@ -85,10 +88,8 @@ public class Engine {
             public long t0;
             public void actionPerformed(ActionEvent evt) {
                 long t1 = System.currentTimeMillis();
-
                 if(t0 == 0)
                     t0 = t1;
-
                 if(t1 > t0) {
                     double dt = (t1 - t0) / 1000.0;
                     t0 = t1;
@@ -110,32 +111,32 @@ public class Engine {
             return String.valueOf(evt.getKeyChar()).toLowerCase();
         } else {
             switch(evt.getKeyCode()) {
-            case KeyEvent.VK_ALT: return "alt";
-            case KeyEvent.VK_CONTROL: return "control";
-            case KeyEvent.VK_SHIFT: return "shift";
-            case KeyEvent.VK_LEFT: return "left";
-            case KeyEvent.VK_RIGHT: return "right";
-            case KeyEvent.VK_UP: return "up";
-            case KeyEvent.VK_DOWN: return "down";
-            case KeyEvent.VK_ENTER: return "enter";
-            case KeyEvent.VK_DELETE: return "delete";
-            case KeyEvent.VK_TAB: return "tab";
-            case KeyEvent.VK_WINDOWS: return "windows";
-            case KeyEvent.VK_BACK_SPACE: return "backspace";
-            case KeyEvent.VK_ALT_GRAPH: return "altgr";
-            case KeyEvent.VK_F1: return "F1";
-            case KeyEvent.VK_F2: return "F2";
-            case KeyEvent.VK_F3: return "F3";
-            case KeyEvent.VK_F4: return "F4";
-            case KeyEvent.VK_F5: return "F5";
-            case KeyEvent.VK_F6: return "F6";
-            case KeyEvent.VK_F7: return "F7";
-            case KeyEvent.VK_F8: return "F8";
-            case KeyEvent.VK_F9: return "F9";
-            case KeyEvent.VK_F10: return "F10";
-            case KeyEvent.VK_F11: return "F11";
-            case KeyEvent.VK_F12: return "F12";
-            default: return "";
+                case KeyEvent.VK_ALT: return "alt";
+                case KeyEvent.VK_CONTROL: return "control";
+                case KeyEvent.VK_SHIFT: return "shift";
+                case KeyEvent.VK_LEFT: return "left";
+                case KeyEvent.VK_RIGHT: return "right";
+                case KeyEvent.VK_UP: return "up";
+                case KeyEvent.VK_DOWN: return "down";
+                case KeyEvent.VK_ENTER: return "enter";
+                case KeyEvent.VK_DELETE: return "delete";
+                case KeyEvent.VK_TAB: return "tab";
+                case KeyEvent.VK_WINDOWS: return "windows";
+                case KeyEvent.VK_BACK_SPACE: return "backspace";
+                case KeyEvent.VK_ALT_GRAPH: return "altgr";
+                case KeyEvent.VK_F1: return "F1";
+                case KeyEvent.VK_F2: return "F2";
+                case KeyEvent.VK_F3: return "F3";
+                case KeyEvent.VK_F4: return "F4";
+                case KeyEvent.VK_F5: return "F5";
+                case KeyEvent.VK_F6: return "F6";
+                case KeyEvent.VK_F7: return "F7";
+                case KeyEvent.VK_F8: return "F8";
+                case KeyEvent.VK_F9: return "F9";
+                case KeyEvent.VK_F10: return "F10";
+                case KeyEvent.VK_F11: return "F11";
+                case KeyEvent.VK_F12: return "F12";
+                default: return "";
             }
         }
     }

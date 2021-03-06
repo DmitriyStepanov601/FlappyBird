@@ -1,3 +1,5 @@
+package logic;
+
 /**
  * Interface that defines the action
  * @author Dmitriy Stepanov
